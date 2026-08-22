@@ -35,40 +35,42 @@ if uploaded_file is not None:
 
     if st.button("Analyze MRI"):
 
-        try:
-            result = analyze_knee(
-                file_path,
-                pixel_spacing=1.0
-            )
+    try:
+        result = analyze_knee(
+            file_path,
+            pixel_spacing=1.0
+        )
 
-            thickness = result[
-                "meniscus_thickness_mm"
-            ]
-            femur = result["femur_width_mm"]
-            tibia = result["tibia_width_mm"]
-            implant = result["implant_size"]
-            st.success("Analysis completed!")
+        thickness = result[
+            "meniscus_thickness_mm"
+        ]
+        femur = result["femur_width_mm"]
+        tibia = result["tibia_width_mm"]
+        implant = result["implant_size"]
 
-            st.metric(
-                "Estimated Meniscus Thickness",
-                f"{thickness:.2f} mm"
-            )
-            st.metric(
-                "Femur Width",
-                f"{femur:.2f} mm"
-            )   
-            st.metric(
-               "Tibia Width",
-                f"{tibia:.2f} mm"
-            )
+        st.success("Analysis completed!")
 
-             st.success(f"Recommended Implant 
-            Size: {implant}")
-              except Exception as error:
-                  st.error(
-                   f"Unable to process image:
-              {error}"
-            )
+        st.metric(
+            "Estimated Meniscus Thickness",
+            f"{thickness:.2f} mm"
+        )
+
+        st.metric(
+            "Femur Width",
+            f"{femur:.2f} mm"
+        )
+
+        st.metric(
+            "Tibia Width",
+            f"{tibia:.2f} mm"
+        )
+
+        st.success(f"Recommended Implant Size: {implant}")
+
+    except Exception as error:
+        st.error(
+            f"Unable to process image: {error}"
+        )   
 
 
 st.warning(
