@@ -53,15 +53,13 @@ if uploaded_file is not None:
                 "Estimated Meniscus Thickness",
                 f"{thickness:.2f} mm"
             )
-            st.metric(
+     st.metric(
          "Femur Width",
          f"{femur:.2f} mm"
-        )
-
-          ( st.metric())
+     )
           "Tibia Width",
            f"{tibia:.2f} mm"
-       )
+     )
 
        st.success(f"Recommended Implant Size: {implant}")
         except Exception as error:
