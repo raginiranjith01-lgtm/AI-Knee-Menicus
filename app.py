@@ -53,18 +53,19 @@ if uploaded_file is not None:
                 "Estimated Meniscus Thickness",
                 f"{thickness:.2f} mm"
             )
-     st.metric(
-         "Femur Width",
-         f"{femur:.2f} mm"
-     )
-          "Tibia Width",
-           f"{tibia:.2f} mm"
-     )
+            st.metric(
+                "Femur Width",
+                f"{femur:.2f} mm"
+            )   
+            st.metric(
+               "Tibia Width",
+                f"{tibia:.2f} mm"
+            )
 
-       st.success(f"Recommended Implant Size: {implant}")
-        except Exception as error:
+             st.success(f"Recommended Implant Size: {implant}")
+              except Exception as error:
 
-            st.error(
+             st.error(
                 f"Unable to process image: {error}"
             )
 
@@ -75,7 +76,7 @@ st.warning(
 )
 return {
     "meniscus_thickness_mm": thickness,
-    "femur_width_mm": femur_width,
-    "tibia_width_mm": tibia_width,
-    "implant_size": implant_size
+    "femur_width_mm": femur,
+    "tibia_width_mm": tibia,
+    "implant_size": implant
 }
