@@ -58,7 +58,7 @@ if uploaded_file is not None:
          f"{femur:.2f} mm"
         )
 
-       st.metric(
+      ( st.metric())
        "Tibia Width",
        f"{tibia:.2f} mm"
        )
