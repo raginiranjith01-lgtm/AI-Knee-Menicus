@@ -62,11 +62,12 @@ if uploaded_file is not None:
                 f"{tibia:.2f} mm"
             )
 
-             st.success(f"Recommended Implant Size: {implant}")
+             st.success(f"Recommended Implant 
+            Size: {implant}")
               except Exception as error:
-
-             st.error(
-                f"Unable to process image: {error}"
+                  st.error(
+                   f"Unable to process image:
+              {error}"
             )
 
 
