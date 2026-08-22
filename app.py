@@ -44,14 +44,26 @@ if uploaded_file is not None:
             thickness = result[
                 "meniscus_thickness_mm"
             ]
-
+            femur = result["femur_width_mm"]
+            tibia = result["tibia_width_mm"]
+            implant = result["implant_size"]
             st.success("Analysis completed!")
 
             st.metric(
                 "Estimated Meniscus Thickness",
                 f"{thickness:.2f} mm"
             )
+            st.metric(
+         "Femur Width",
+         f"{femur:.2f} mm"
+        )
 
+       st.metric(
+       "Tibia Width",
+       f"{tibia:.2f} mm"
+       )
+
+       st.success(f"Recommended Implant Size: {implant}")
         except Exception as error:
 
             st.error(
@@ -63,3 +75,9 @@ st.warning(
     "This is an academic prototype and is not intended "
     "for clinical diagnosis or treatment decisions."
 )
+return {
+    "meniscus_thickness_mm": thickness,
+    "femur_width_mm": femur_width,
+    "tibia_width_mm": tibia_width,
+    "implant_size": implant_size
+}
