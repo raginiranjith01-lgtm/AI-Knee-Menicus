@@ -4,11 +4,11 @@ from prediction.predict import analyze_knee
 
 st.set_page_config(
     page_title="AI Knee Meniscus Assessment",
-    page_icon="🦵",
+    page_icon="🦴",
     layout="centered"
 )
 
-st.title("🦵 AI-Assisted Knee Assessment")
+st.title("🦴 AI-Assisted Knee Assessment")
 
 st.write(
     "Upload a knee MRI image to perform a prototype "
@@ -35,51 +35,42 @@ if uploaded_file is not None:
 
     if st.button("Analyze MRI"):
 
-    try:
-        result = analyze_knee(
-            file_path,
-            pixel_spacing=1.0
-        )
+        try:
+            result = analyze_knee(
+                file_path,
+                pixel_spacing=1.0
+            )
 
-        thickness = result[
-            "meniscus_thickness_mm"
-        ]
-        femur = result["femur_width_mm"]
-        tibia = result["tibia_width_mm"]
-        implant = result["implant_size"]
+            thickness = result["meniscus_thickness_mm"]
+            femur = result["femur_width_mm"]
+            tibia = result["tibia_width_mm"]
+            implant = result["implant_size"]
 
-        st.success("Analysis completed!")
+            st.success("Analysis completed!")
 
-        st.metric(
-            "Estimated Meniscus Thickness",
-            f"{thickness:.2f} mm"
-        )
+            st.metric(
+                "Estimated Meniscus Thickness",
+                f"{thickness:.2f} mm"
+            )
 
-        st.metric(
-            "Femur Width",
-            f"{femur:.2f} mm"
-        )
+            st.metric(
+                "Femur Width",
+                f"{femur:.2f} mm"
+            )
 
-        st.metric(
-            "Tibia Width",
-            f"{tibia:.2f} mm"
-        )
+            st.metric(
+                "Tibia Width",
+                f"{tibia:.2f} mm"
+            )
 
-        st.success(f"Recommended Implant Size: {implant}")
+            st.success(f"Recommended Implant Size: {implant}")
 
-    except Exception as error:
-        st.error(
-            f"Unable to process image: {error}"
-        )   
+        except Exception as error:
+            st.error(
+                f"Unable to process image: {error}"
+            )
 
-
-st.warning(
-    "This is an academic prototype and is not intended "
-    "for clinical diagnosis or treatment decisions."
-)
-return {
-    "meniscus_thickness_mm": thickness,
-    "femur_width_mm": femur,
-    "tibia_width_mm": tibia,
-    "implant_size": implant
-}
+    st.warning(
+        "This is an academic prototype and is not intended "
+        "for clinical diagnosis or treatment decisions."
+    )
